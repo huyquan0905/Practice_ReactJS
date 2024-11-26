@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+To-Do List Application
+This project is a React-based To-Do List Application that allows users to manage tasks by adding, marking as completed, filtering by status, and clearing completed tasks. It saves tasks to the browser's localStorage, ensuring data persistence across sessions.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+Add new tasks.
+Mark tasks as complete/incomplete.
+Filter tasks by All, Active, or Completed.
+Display the total number of active tasks.
+Clear all completed tasks.
+Persistent task list via localStorage.
+Getting Started
+Prerequisites
+Ensure you have the following installed:
 
-## Available Scripts
+Node.js (>= 14.x recommended)
+npm or yarn
+Installation and Setup
+Clone the repository:
 
-In the project directory, you can run:
+bash
+Copy code
+git clone <[repository-url](https://github.com/huyquan0905/Practice_ReactJS.git)>
+Replace <[repository-url](https://github.com/huyquan0905/Practice_ReactJS.git)> with the URL of the repository.
 
-### `npm start`
+Navigate to the project directory:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+bash
+Copy code
+cd <project-folder>
+Install dependencies:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bash
+Copy code
+npm install
+or if you're using yarn:
 
-### `npm test`
+bash
+Copy code
+yarn install
+Start the development server:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+bash
+Copy code
+npm start
+or:
 
-### `npm run build`
+bash
+Copy code
+yarn start
+Open the application in your browser at http://localhost:3000.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Usage
+Adding Tasks:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Use the input field to enter a task and press Enter or click the Add button.
+Managing Tasks:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Click the checkbox next to a task to toggle its status (completed/incomplete).
+Filtering Tasks:
 
-### `npm run eject`
+Use the All, Active, or Completed buttons to filter the task list.
+Clearing Completed Tasks:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Click the Clear Completed button to remove all completed tasks.
+Viewing Active Tasks Count:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The Total Items button displays the number of active tasks remaining.
+File Structure
+plaintext
+Copy code
+src/
+├── components/
+│   └── ToDoList.jsx   # Main To-Do List component
+├── utils/
+│   └── const/         # Constants for labels and messages
+├── App.js             # Entry point for the app
+├── index.js           # Renders the app
+Customization
+Modify labels and messages in src/utils/const/common.js to localize or personalize text in the app.
+Style adjustments can be made directly in the inline styles or by migrating to CSS files or libraries like styled-components.
+Dependencies
+React: Library for building user interfaces.
+@mui/material: For UI components (e.g., TextField, Fab).
+@mui/icons-material: For icons (e.g., EditIcon).
+Contributing
+Feel free to submit issues or contribute to this project by creating pull requests. For significant changes, please open an issue first to discuss what you would like to change.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+License
+This project is licensed under the MIT License.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Support
+For questions or support, please reach out to [huyquanwork95@gmail.com].
