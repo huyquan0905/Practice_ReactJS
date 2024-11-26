@@ -1,92 +1,126 @@
-To-Do List Application
-This project is a React-based To-Do List Application that allows users to manage tasks by adding, marking as completed, filtering by status, and clearing completed tasks. It saves tasks to the browser's localStorage, ensuring data persistence across sessions.
 
-Features
-Add new tasks.
-Mark tasks as complete/incomplete.
-Filter tasks by All, Active, or Completed.
-Display the total number of active tasks.
-Clear all completed tasks.
-Persistent task list via localStorage.
-Getting Started
-Prerequisites
-Ensure you have the following installed:
+# To-Do List Application
 
-Node.js (>= 14.x recommended)
-npm or yarn
-Installation and Setup
-Clone the repository:
+This is a simple React-based To-Do List application that allows users to manage tasks efficiently by adding, filtering, marking tasks as complete, and clearing completed tasks.
 
-bash
-Copy code
-git clone <[repository-url](https://github.com/huyquan0905/Practice_ReactJS.git)>
-Replace <[repository-url](https://github.com/huyquan0905/Practice_ReactJS.git)> with the URL of the repository.
+---
 
-Navigate to the project directory:
+## Features
 
-bash
-Copy code
-cd <project-folder>
-Install dependencies:
+- Add new tasks to your to-do list.
+- Toggle tasks between completed and incomplete states.
+- Filter tasks by "All," "Active," or "Completed" states.
+- Clear all completed tasks from the list.
+- View the total count of active tasks.
+- Persistent storage using `localStorage` to save tasks.
 
-bash
-Copy code
-npm install
-or if you're using yarn:
+---
 
-bash
-Copy code
-yarn install
-Start the development server:
+## Installation and Setup
 
-bash
-Copy code
-npm start
-or:
+### Prerequisites
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/) (v14 or above)
+- npm or Yarn package manager
 
-bash
-Copy code
-yarn start
-Open the application in your browser at http://localhost:3000.
+### Steps to Run the Application
 
-Usage
-Adding Tasks:
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/huyquan0905/Practice_ReactJS.git
+    ```
 
-Use the input field to enter a task and press Enter or click the Add button.
-Managing Tasks:
+2. **Navigate to the project directory**:
+    ```bash
+    cd Practice_ReactJS
+    ```
 
-Click the checkbox next to a task to toggle its status (completed/incomplete).
-Filtering Tasks:
+3. **Install dependencies**:
+    - Using npm:
+        ```bash
+        npm install
+        ```
+    - Or using Yarn:
+        ```bash
+        yarn install
+        ```
 
-Use the All, Active, or Completed buttons to filter the task list.
-Clearing Completed Tasks:
+4. **Start the development server**:
+    - Using npm:
+        ```bash
+        npm start
+        ```
+    - Or using Yarn:
+        ```bash
+        yarn start
+        ```
 
-Click the Clear Completed button to remove all completed tasks.
-Viewing Active Tasks Count:
+5. **Open the application**:
+   The application will be available in your browser at [http://localhost:3000](http://localhost:3000).
 
-The Total Items button displays the number of active tasks remaining.
-File Structure
-plaintext
-Copy code
+---
+
+## Usage
+
+### Adding Tasks
+1. Use the input field at the top of the application to enter a task.
+2. Press **Enter** or click the **Add** button to add the task to the list.
+
+### Managing Tasks
+1. Click the checkbox next to a task to toggle its status (completed/incomplete).
+2. Click the **Clear Completed** button to remove all completed tasks.
+
+### Filtering Tasks
+- Use the **All**, **Active**, or **Completed** buttons to filter the task list.
+
+### Viewing Active Tasks Count
+- The **Total Items** button displays the number of active tasks remaining.
+
+---
+
+## File Structure
+
+```
 src/
 ├── components/
 │   └── ToDoList.jsx   # Main To-Do List component
 ├── utils/
-│   └── const/         # Constants for labels and messages
+│   └── const/
+│       └── common.js  # Constants for labels and messages
 ├── App.js             # Entry point for the app
 ├── index.js           # Renders the app
-Customization
-Modify labels and messages in src/utils/const/common.js to localize or personalize text in the app.
-Style adjustments can be made directly in the inline styles or by migrating to CSS files or libraries like styled-components.
-Dependencies
-React: Library for building user interfaces.
-@mui/material: For UI components (e.g., TextField, Fab).
-@mui/icons-material: For icons (e.g., EditIcon).
-Contributing
+```
+
+---
+
+## Customization
+
+- Modify labels and messages in `src/utils/const/common.js` to localize or personalize text in the app.
+- Style adjustments can be made directly in the inline styles or by migrating to CSS files or libraries like `styled-components`.
+
+---
+
+## Dependencies
+
+This project uses the following dependencies:
+- **React**: Library for building user interfaces.
+- **@mui/material**: For UI components (e.g., `TextField`, `Fab`).
+- **@mui/icons-material**: For icons (e.g., `EditIcon`).
+
+---
+
+## Contributing
+
 Feel free to submit issues or contribute to this project by creating pull requests. For significant changes, please open an issue first to discuss what you would like to change.
 
-License
+---
+
+## License
+
 This project is licensed under the MIT License.
 
-Support
-For questions or support, please reach out to [huyquanwork95@gmail.com].
+---
+
+## Support
+
+For questions or support, please reach out to [huyquanwork95@gmail.com](mailto:huyquanwork95@gmail.com).
