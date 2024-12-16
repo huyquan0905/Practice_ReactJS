@@ -1,6 +1,6 @@
 import React, { useState, memo } from 'react';
 
-const ToDoItem = memo(({ job, jobStatus, editJobText }) => {
+const ToDoItem = memo(({ job, jobStatus, editJobText, onSetJob }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editedText, setEditedText] = useState(job.text);
 
@@ -9,6 +9,11 @@ const ToDoItem = memo(({ job, jobStatus, editJobText }) => {
         editJobText(job.id, editedText);
         setIsEditing(false);
     };
+
+    const handleDoubleClick = () => {
+        onSetJob(job.text, job.id);
+        setIsEditing(true);
+    }
 
     return (
         <li style={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -34,7 +39,7 @@ const ToDoItem = memo(({ job, jobStatus, editJobText }) => {
                         textDecoration: job.completed ? "line-through" : "none",
                         flex: "1",
                     }}
-                    onDoubleClick={() => setIsEditing(true)}
+                    onDoubleClick={handleDoubleClick}
                 >
                     {job.text}
                 </span>

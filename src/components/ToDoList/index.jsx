@@ -4,12 +4,14 @@ import ToDoItem from './ToDoItem';
 import FilterItem from './FilterItem';
 import { LB_STATUS, LB_TO_DO_LIST } from '../../utils/const/common';
 import { TablePagination } from '@mui/material';
+import useFilter from '../hooks/useFilter';
+import {ThemeContext} from "../../context/themeContext";
 
 const ToDoPage = () => {
     const ListJob = "JOB_LIST";
     const [job, setJob] = useState("");
-    const [filter, setFilter] = useState(LB_STATUS.ALL);
-
+    // const [filter, setFilter] = useState(LB_STATUS.ALL);
+    const [editingJobId, setEditingJobId] = useState(null);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -18,22 +20,42 @@ const ToDoPage = () => {
         return storageJobList ?? [];
     });
 
-    const [jobList, setJobList] = useState(jobListRef.current);
 
+    const [jobList, setJobList] = useState(jobListRef.current);
+    const {filter, setFilter, filteredData: filterJob} = useFilter(jobList, LB_STATUS.ALL);
     useEffect(() => {
         localStorage.setItem(ListJob, JSON.stringify(jobList));
+        console.log("render ne");
     }, [jobList]);
+
+    // Using context in child components
+    const { toggleFunction, themeStyles } = React.useContext(ThemeContext);
 
     const handleAddJob = () => {
         if (!job.trim()) return;
-        const newJob = { id: Date.now(), text: job.trim(), completed: false };
-        setJobList((prevList) => {
-            const updatedList = [...prevList, newJob];
-            jobListRef.current = updatedList;
-            return updatedList;
+    
+        if (editingJobId) {
+            // Edit current job
+            setJobList((prevList) =>{
+                const updateList = prevList.map((jobItem) =>
+                    jobItem.id === editingJobId ? { ...jobItem, text: job } : jobItem
+                )
+                const editedJob = updateList.find((job) => job.id === editingJobId);
+                const filteredList = updateList.filter((job) => job.id !== editingJobId);
+                setEditingJobId(null); 
+                return [editedJob, ...filteredList];
         });
-        setJob("");
+           
+            
+        } else {
+            // Add new job
+            const newJob = { id: Date.now(), text: job.trim(), completed: false };
+            setJobList((prevList) => [newJob, ...prevList]);
+        }
+    
+        setJob(""); 
     };
+    
 
     const jobStatus = (id) => {
         setJobList((prevList) => {
@@ -50,16 +72,9 @@ const ToDoPage = () => {
             const updatedList = prevList.map((job) =>
                 job.id === id ? { ...job, text: newText } : job
             );
-            jobListRef.current = updatedList;
-            return updatedList;
-        });
-    };
-
-    const clearCompleted = () => {
-        setJobList((prevList) => {
-            const updatedList = prevList.filter((job) => !job.completed);
-            jobListRef.current = updatedList;
-            return updatedList;
+           const editedJob = updatedList.find((job) => job.id === id);
+           const filteredList = updatedList.filter((job) => job.id !== id);
+           return [editedJob, ...filteredList];
         });
     };
 
@@ -85,7 +100,7 @@ const ToDoPage = () => {
 
 
     return (
-        <div style={{ padding: "10px", textAlign: "center" }}>
+  <div style={{ padding: "10px", textAlign: "center", ...themeStyles }}>
             <h1 style={{ color: "#b83f45" }}>{LB_TO_DO_LIST}</h1>
             <InputField
                 job={job}
@@ -100,9 +115,19 @@ const ToDoPage = () => {
                         job={job}
                         jobStatus={jobStatus}
                         editJobText={editJobText}
+                        onSetJob={(text, id) => {
+                            setJob(text);
+                            setEditingJobId(id);
+                        }}
                     />
                 ))}
             </ul>
+
+            <div>
+                <button onClick={toggleFunction}>
+                    Change Theme
+                </button>
+            </div>
 
             <TablePagination
                 sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
@@ -118,10 +143,11 @@ const ToDoPage = () => {
             <FilterItem
                 filter={filter}
                 setFilter={setFilter}
-                clearCompleted={clearCompleted}
+                clearCompleted={() => setJobList(jobList.filter((job) => !job.completed))}
                 countItems={jobList.filter((job) => !job.completed).length}
             />
         </div>
+      
     );
 };
 
